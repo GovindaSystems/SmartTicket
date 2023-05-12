@@ -1,10 +1,7 @@
 # SmartTicket
+
 O SmartTicket é uma plataforma revolucionária de venda de ingressos para eventos, baseada na tecnologia Web3. Utilizando contratos inteligentes e criptomoedas, oferece uma experiência de compra segura, transparente e descentralizada, reduzindo fraudes e revenda ilegal de ingressos, enquanto beneficia organizadores de eventos e consumidores.
 
-o processo de cadastro na plataforma:
-
-1 - Entrar no site smartticket.govindasystems.com
-2 - Realize um cadastro de usuário (CPF/CNPJ, nome, autenticação MetaMask) "para saber mais sobre autenticação MetaMask clique_aqui"
 
 
 ## Processo de Autenticação de Usuário na Web3
@@ -15,11 +12,7 @@ o processo de cadastro na plataforma:
 
 3. **Permissão para acesso**: A carteira do usuário solicitará permissão para se conectar à plataforma SmartTicket. O usuário deve conceder essa permissão para prosseguir. Ao fazer isso, a plataforma terá acesso à chave pública do usuário, que pode ser usada para identificar o usuário de forma única.
 
-4. **Assinatura de mensagem**: Para autenticar o usuário e garantir que ele possui a chave privada correspondente à chave pública fornecida, a plataforma pode solicitar ao usuário que assine uma mensagem específica. A mensagem pode ser um texto gerado aleatoriamente ou uma solicitação personalizada, como "Eu concordo com os termos e condições do SmartTicket".
-
-5. **Verificação da assinatura**: O usuário assina a mensagem usando sua chave privada através da carteira criptográfica. A assinatura digital resultante é enviada de volta à plataforma. A plataforma, então, verifica se a assinatura é válida, utilizando a chave pública do usuário. Se a assinatura for válida, a autenticação é bem-sucedida, e o usuário é considerado autenticado.
-
-6. **Acesso à plataforma**: Uma vez autenticado, o usuário pode acessar os recursos da plataforma SmartTicket de acordo com suas permissões e interagir com contratos inteligentes usando sua carteira criptográfica.
+4. **Acesso à plataforma**: Uma vez autenticado, o usuário pode acessar os recursos da plataforma SmartTicket de acordo com suas permissões e interagir com contratos inteligentes usando sua carteira criptográfica.
 
 O processo de autenticação na Web3 é descentralizado e oferece maior segurança, já que não envolve o armazenamento de senhas em servidores centralizados. No entanto, é crucial que os usuários protejam suas chaves privadas e garantam a segurança de suas carteiras criptográficas, pois a perda ou roubo da chave privada pode resultar na perda de acesso à sua identidade na rede blockchain.
 
