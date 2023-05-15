@@ -1,6 +1,101 @@
-# SmartTicket
+# SmartTicket DAO
 
-O SmartTicket é uma plataforma revolucionária de venda de ingressos para eventos, baseada na tecnologia Web3. Utilizando contratos inteligentes e criptomoedas, oferece uma experiência de compra segura, transparente e descentralizada, reduzindo fraudes e revenda ilegal de ingressos, enquanto beneficia organizadores de eventos e consumidores.
+O SmartTicket DAO é uma plataforma revolucionária de venda de ingressos para eventos, baseada na tecnologia Web3. Utilizando contratos inteligentes e criptomoedas, oferece uma experiência de compra segura, transparente e descentralizada, reduzindo fraudes e revenda ilegal de ingressos, enquanto beneficia organizadores de eventos e consumidores.
+
+## Desafios no mercado de ingressos
+
+* Taxas elevadas cobradas por intermediários
+* Risco de fraude e falsificação de ingressos
+* Falta de transparência na distribuição de ingressos
+* Inacessibilidade e dificuldade na compra e venda de ingressos
+
+## Características do SmartTicket DAO
+
+* Baseado na tecnologia blockchain para garantir transparência e segurança
+* Utiliza tokens não fungíveis (NFTs) para representar ingressos, eliminando o risco de falsificação
+* Governança descentralizada através da participação dos detentores de tokens
+* Redução de custos e taxas graças à eliminação de intermediários
+
+## Jornada do usuário no SmartTicket DAO
+
+* Cliente entra no site
+* Escolhe o ingresso (carrinho)
+* Cadastro básico
+* [Checkout] - Escolha de meio de pagamento (criptomoedas ou moedas fiduciárias)
+* [Checkout] - Pagamento aprovado
+* [Checkout] - Tela de finalização
+* Cliente recebe o ingresso em formato de NFT no APP da SmartTicket
+
+## Vantagens do SmartTicket DAO
+
+* Maior transparência e confiança para compradores e vendedores
+* Menor risco de fraudes e falsificações
+* Redução de taxas e custos de transação
+* Facilita a compra e venda de ingressos usando criptomoedas e moedas fiduciárias
+* Governança descentralizada e participativa
+
+## Principais Tecnologias
+
+> FE
+
+- Vercel (https://vercel.com/)
+- Next.js (https://nextjs.org/)
+- react-bootstrap (https://react-bootstrap.github.io/)
+- web3.js (https://web3js.readthedocs.io/en/v1.5.2/)
+- MetaMask (https://metamask.io/)
+- Mobile (IOS / Android) (https://reactnative.dev/)
+
+> BE
+
+- Node.js (https://nodejs.org/en/)
+- Gnosis Chain (Oracle, xDAI, Gnosis Safe) (https://gnosis.io/chain/)
+- OpenZeppelin (https://openzeppelin.com/)
+- Solidity (https://docs.soliditylang.org/en/v0.8.7/)
+- Truffle (https://www.trufflesuite.com/)
+- Ganache (https://www.trufflesuite.com/ganache)
+- Infura (https://infura.io/)
+
+## Principais Personas
+
+- Cliente: Pessoa que compra o ingresso
+- Organizador: Pessoa responsável pelo ingresso
+
+## Principais Jornadas do Cliente
+
+- Compra de ingressos
+- Cadastro de dados pessoais
+- Processo de retirada do ingresso
+- Atendimento ao cliente
+
+## Principais Jornadas do Organizador
+
+- Cadastro de dados pessoais
+- Cadastro de eventos (data (yyyy-mm-dd), hora (hh:mm), local, descrição)
+- Cadastro de ingressos (nome, valor, quantidade, tipo, descrição)
+- Cadastro de forma de pagamento (cartão de crédito, boleto, pix)
+- Cadastro de promoções (ingressos cortesia, desconto, combos)
+- Atendimento ao cliente (reclamações, sugestões, dúvidas)
+
+## Como Começar
+
+// Aqui você pode incluir instruções sobre como instalar e executar o projeto.
+
+## Licença
+
+MIT
+
+## Cronograma
+
+```
+gantt
+    section Section
+    Completed :done,    des1, 2014-01-06,2014-01-08
+    Active        :active,  des2, 2014-01-07, 3d
+    Parallel 1   :         des3, after des1, 1d
+    Parallel 2   :         des4, after des1, 1d
+    Parallel 3   :         des5, after des3, 1d
+    Parallel 4   :         des6, after des4, 1d
+```
 
 ## Processo de Autenticação de Usuário na Web3
 
@@ -13,6 +108,13 @@ O SmartTicket é uma plataforma revolucionária de venda de ingressos para event
 4. **Acesso à plataforma**: Uma vez autenticado, o usuário pode acessar os recursos da plataforma SmartTicket de acordo com suas permissões e interagir com contratos inteligentes usando sua carteira criptográfica.
 
 O processo de autenticação na Web3 é descentralizado e oferece maior segurança, já que não envolve o armazenamento de senhas em servidores centralizados. No entanto, é crucial que os usuários protejam suas chaves privadas e garantam a segurança de suas carteiras criptográficas, pois a perda ou roubo da chave privada pode resultar na perda de acesso à sua identidade na rede blockchain.
+
+## Junte-se à revolução dos ingressos com SmartTicket DAO
+
+Acesse nosso site e experimente a compra de ingressos sem complicações e segura
+Saiba mais sobre como se tornar um membro da comunidade SmartTicket DAO e participar de nossa governança
+Siga-nos nas redes sociais para se manter atualizado sobre as últimas notícias e desenvolvimentos
+Junte-se a nós e torne-se parte da revolução na indústria de
 
 <p align="center">
 <img src="https://raw.githubusercontent.com/mermaid-js/mermaid/develop/docs/public/favicon.svg" height="150">
