@@ -2,8 +2,6 @@
 
 O SmartTicket é uma plataforma revolucionária de venda de ingressos para eventos, baseada na tecnologia Web3. Utilizando contratos inteligentes e criptomoedas, oferece uma experiência de compra segura, transparente e descentralizada, reduzindo fraudes e revenda ilegal de ingressos, enquanto beneficia organizadores de eventos e consumidores.
 
-
-
 ## Processo de Autenticação de Usuário na Web3
 
 1. **Instalação da carteira**: O usuário instala uma carteira criptográfica compatível com a Web3, como MetaMask, Trust Wallet ou Coinbase Wallet, em seu navegador ou dispositivo móvel. Essas carteiras geram um par de chaves (chave pública e chave privada) que representam a identidade do usuário na rede blockchain.
