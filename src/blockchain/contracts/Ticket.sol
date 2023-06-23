@@ -34,11 +34,12 @@ contract Ticket is ERC721URIStorage {
         events.push(Event(name, location, date, ticketPrice, totalTickets));
     }
 
-    function mint(address to, uint256 eventId) external payable {
+    function mint(address to, uint256 eventId) public {
         require(msg.sender == admin, "only admin");
         require(eventId < events.length, "event does not exist");
-        require(msg.value >= events[eventId].ticketPrice, "not enough funds");
+
         _mint(to, nextTokenId);
+        _setTokenURI(nextTokenId, "tokenURI");
         nextTokenId++;
     }
 
