@@ -51,7 +51,7 @@ O SmartTicket DAO é uma plataforma revolucionária de venda de ingressos para e
 - Gnosis Chain (Oracle, xDAI, Gnosis Safe) (https://gnosis.io/chain/)
 - OpenZeppelin (https://openzeppelin.com/)
 - Solidity (https://docs.soliditylang.org/en/v0.8.7/)
-- Truffle (https://www.trufflesuite.com/)
+- HardHat (https://hardhat.org/)
 - Ganache (https://www.trufflesuite.com/ganache)
 - Infura (https://infura.io/)
 
