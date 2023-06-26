@@ -38,7 +38,7 @@ contract Ticket is ERC721URIStorage {
         require(msg.sender == admin, "only admin");
         require(eventId < events.length, "event does not exist");
 
-        _mint(to, nextTokenId);
+        _safeMint(to, nextTokenId);
         _setTokenURI(nextTokenId, "tokenURI");
         nextTokenId++;
     }
