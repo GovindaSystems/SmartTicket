@@ -55,6 +55,11 @@ describe('Ticket contract', function () {
           .to.emit(instance, 'Transfer')
           .withArgs(NULL_ADDRESS, userAddress, 0);
       });
+
+      it('should trying mint token to an the 0x0 address', async function () {
+        await instance.createEvent("Test Event", "Test Location", Date.now(), ethers.utils.parseEther("1"), 100);
+        await expect(instance.mint(NULL_ADDRESS, 0)).to.be.revertedWith('ERC721: mint to the zero address');
+      });
     });
  
     describe('burning', function () {
