@@ -41,12 +41,17 @@ contract User is AccessManager {
             document: ""
         });
 
-        grantRole(USER_ROLE, msg.sender);
+        grantRole(USER_ROLE, users[email].wallet);
     }
 
     function getInfo(
         string memory email
-    ) public view returns (string memory name, address wallet) {
+    )
+        public
+        view
+        onlyRole(USER_ROLE)
+        returns (string memory name, address wallet)
+    {
         Model memory user = users[email];
         return (user.name, user.wallet);
     }
@@ -59,5 +64,7 @@ contract User is AccessManager {
 
         users[email].document = document;
         users[email].isOrganizer = true;
+
+        grantRole(ORGANIZER_ROLE, msg.sender);
     }
 }
