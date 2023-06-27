@@ -7,7 +7,7 @@ contract AccessManager is AccessControl {
 
     bytes32 public constant ORGANIZER_ROLE = keccak256("ORGANIZER_ROLE");
     bytes32 public constant ADMIN_ROLE = keccak256("ADMIN_ROLE");
-    bytes32 public constant CUSTOMER_SUPPORT_ROLE = keccak256("CUSTOMER_SUPPORT_ROLE");
+    bytes32 public constant USER_ROLE = keccak256("USER_ROLE");
     
     constructor() {
         _setupRole(DEFAULT_ADMIN_ROLE, msg.sender);

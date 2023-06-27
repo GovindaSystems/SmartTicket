@@ -1,38 +1,63 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "@openzeppelin/contracts/access/AccessControl.sol";
+import "./AccessManager.sol";
+import "./Wallet.sol";
 
-contract UserRegistry is AccessControl {
-    bytes32 public constant USER_ROLE = keccak256("USER_ROLE");
-
-    struct User {
+contract User is AccessManager {
+    struct Model {
         string name;
         string email;
+        string phone;
+        address wallet;
         bool registered;
+        bool isOrganizer;
+        string document;
     }
 
-    mapping(address => User) public users;
+    mapping(string => Model) public users;
 
     constructor() {
         _setupRole(DEFAULT_ADMIN_ROLE, msg.sender);
     }
 
-    function registerUser(string memory name, string memory email) public {
-        require(!users[msg.sender].registered, "User already registered");
+    function register(
+        string memory name,
+        string memory email,
+        string memory phone
+    ) public {
+        require(bytes(name).length == 0, "Name is required");
+        require(bytes(email).length == 0, "E-mail is required");
+        require(bytes(phone).length == 0, "Phone is required");
+        require(users[email].registered == false, "E-mail already exists");
 
-        users[msg.sender] = User({
+        users[email] = Model({
             name: name,
             email: email,
-            registered: true
+            phone: phone,
+            wallet: address(new Wallet()),
+            registered: true,
+            isOrganizer: false,
+            document: ""
         });
 
         grantRole(USER_ROLE, msg.sender);
     }
 
-    function getUserInfo(address userAddress) public view returns (string memory name, string memory email) {
-        User memory user = users[userAddress];
-        require(user.registered, "User not registered");
-        return (user.name, user.email);
+    function getInfo(
+        string memory email
+    ) public view returns (string memory name, address wallet) {
+        Model memory user = users[email];
+        return (user.name, user.wallet);
+    }
+
+    function setOrganizer(
+        string memory email,
+        string memory document
+    ) public onlyRole(DEFAULT_ADMIN_ROLE) {
+        require(bytes(document).length == 0, "Document is required");
+
+        users[email].document = document;
+        users[email].isOrganizer = true;
     }
 }
