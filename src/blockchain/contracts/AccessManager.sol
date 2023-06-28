@@ -14,11 +14,6 @@ contract AccessManager is AccessControl {
         _setupRole(ORGANIZER_ROLE, msg.sender);
     }
 
-    modifier onlyRole(bytes32 role) override {
-        require(hasRole(role, msg.sender), "AccessManager: account does not have required role");
-        _;
-    }
-
     function grantOrganizerRole(address account) public onlyRole(DEFAULT_ADMIN_ROLE) {
         grantRole(ORGANIZER_ROLE, account);
     }
