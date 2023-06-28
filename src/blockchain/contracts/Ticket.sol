@@ -22,7 +22,7 @@ contract Ticket is ERC721URIStorage {
 
     constructor(address accessManagerAddress) ERC721("EventTicket", "ETKT") {
         admin = msg.sender;
-        accessManager = AccessManager(accessManagerAddress); // Initialize the AccessManager instance
+        accessManager = AccessManager(accessManagerAddress);
     }
 
     function createEvent(
@@ -35,7 +35,7 @@ contract Ticket is ERC721URIStorage {
         require(
             accessManager.hasRole(accessManager.ORGANIZER_ROLE(), msg.sender),
             "only organizer"
-        ); // Check if the sender has the ORGANIZER_ROLE
+        );
         events.push(Event(name, location, date, ticketPrice, totalTickets));
     }
 
@@ -43,7 +43,7 @@ contract Ticket is ERC721URIStorage {
         require(
             accessManager.hasRole(accessManager.ORGANIZER_ROLE(), msg.sender),
             "only organizer"
-        ); // Check if the sender has the ORGANIZER_ROLE
+        );
         require(eventId < events.length, "event does not exist");
         _safeMint(to, nextTokenId);
         _setTokenURI(nextTokenId, "tokenURI");

@@ -18,7 +18,7 @@ contract User is AccessManager {
     mapping(string => Model) public users;
 
     constructor() {
-        _setupRole(DEFAULT_ADMIN_ROLE, msg.sender);
+        _setupRole(ADMIN_ROLE, msg.sender);
     }
 
     function register(
@@ -26,9 +26,9 @@ contract User is AccessManager {
         string memory email,
         string memory phone
     ) public {
-        require(bytes(name).length == 0, "Name is required");
-        require(bytes(email).length == 0, "E-mail is required");
-        require(bytes(phone).length == 0, "Phone is required");
+        require(bytes(name).length > 0, "Name is required");
+        require(bytes(email).length > 0, "E-mail is required");
+        require(bytes(phone).length > 0, "Phone is required");
         require(users[email].registered == false, "E-mail already exists");
 
         users[email] = Model({
@@ -49,7 +49,7 @@ contract User is AccessManager {
     )
         public
         view
-        onlyRole(USER_ROLE)
+        onlyRoles(USER_ROLE, ADMIN_ROLE)
         returns (string memory name, address wallet)
     {
         Model memory user = users[email];
@@ -59,7 +59,7 @@ contract User is AccessManager {
     function setOrganizer(
         string memory email,
         string memory document
-    ) public onlyRole(DEFAULT_ADMIN_ROLE) {
+    ) public onlyRole(ADMIN_ROLE) {
         require(bytes(document).length == 0, "Document is required");
 
         users[email].document = document;

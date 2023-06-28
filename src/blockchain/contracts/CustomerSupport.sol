@@ -6,7 +6,6 @@ pragma solidity ^0.8.0;
 import "./AccessManager.sol";
 
 contract CustomerSupport is AccessManager {
-    
     struct Model {
         address user;
         string message;
@@ -22,15 +21,20 @@ contract CustomerSupport is AccessManager {
     }
 
     function submitTicket(string memory message) public {
-        models.push(Model({
-            user: msg.sender,
-            message: message,
-            response: "",
-            resolved: false
-        }));
+        models.push(
+            Model({
+                user: msg.sender,
+                message: message,
+                response: "",
+                resolved: false
+            })
+        );
     }
 
-    function respondToTicket(uint256 ticketId, string memory response) public onlyRole(ADMIN_ROLE) {
+    function respondToTicket(
+        uint256 ticketId,
+        string memory response
+    ) public onlyRole(ADMIN_ROLE) {
         Model storage model = models[ticketId];
         require(!model.resolved, "Ticket already resolved");
         model.response = response;

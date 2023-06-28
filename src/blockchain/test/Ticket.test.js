@@ -46,7 +46,6 @@ describe('Ticket contract', function () {
 
     describe('minting', function () {
       it('should mint token to an address', async function () {
-        await accessManagerInstance.grantOrganizerRole(deployerAddress);
         await instance.createEvent("Test Event", "Test Location", Date.now(), ethers.utils.parseEther("1"), 100);
         const initialBalance = await instance.balanceOf(userAddress);
         await instance.mint(userAddress, 0);
