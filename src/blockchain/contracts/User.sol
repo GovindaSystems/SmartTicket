@@ -40,8 +40,6 @@ contract User is AccessManager {
             isOrganizer: false,
             document: ""
         });
-
-        grantRole(USER_ROLE, users[email].wallet);
     }
 
     function getInfo(
@@ -49,22 +47,19 @@ contract User is AccessManager {
     )
         public
         view
-        onlyRoles(USER_ROLE, ADMIN_ROLE)
-        returns (string memory name, address wallet)
+        returns (string memory name, address wallet, bool isOrganizer)
     {
         Model memory user = users[email];
-        return (user.name, user.wallet);
+        return (user.name, user.wallet, user.isOrganizer);
     }
 
     function setOrganizer(
         string memory email,
         string memory document
     ) public onlyRole(ADMIN_ROLE) {
-        require(bytes(document).length == 0, "Document is required");
+        require(bytes(document).length > 0, "Document is required");
 
         users[email].document = document;
         users[email].isOrganizer = true;
-
-        grantRole(ORGANIZER_ROLE, msg.sender);
     }
 }

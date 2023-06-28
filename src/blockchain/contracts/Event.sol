@@ -16,7 +16,6 @@ contract Event is AccessManager {
 
     constructor() {
         _setupRole(ADMIN_ROLE, msg.sender);
-        _setupRole(ORGANIZER_ROLE, msg.sender);
     }
 
     function createEvent(
@@ -24,7 +23,7 @@ contract Event is AccessManager {
         string memory location,
         uint256 date,
         string memory description
-    ) public onlyRole(ORGANIZER_ROLE) {
+    ) public {
         events.push(
             Model({
                 name: name,

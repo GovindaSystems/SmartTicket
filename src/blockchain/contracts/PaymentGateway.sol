@@ -20,7 +20,6 @@ contract PaymentGateway is AccessManager {
 
     constructor() {
         _setupRole(ADMIN_ROLE, msg.sender);
-        _setupRole(ORGANIZER_ROLE, msg.sender);
     }
 
     function setPaymentMethods(
@@ -28,7 +27,7 @@ contract PaymentGateway is AccessManager {
         bool creditCard,
         bool boleto,
         bool pix
-    ) public onlyRole(ORGANIZER_ROLE) {
+    ) public {
         eventPaymentMethods[eventId] = EventPaymentMethods({
             creditCard: creditCard,
             boleto: boleto,

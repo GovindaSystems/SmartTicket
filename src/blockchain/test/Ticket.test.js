@@ -1,13 +1,11 @@
 const { expect, use } = require('chai');
 const { ContractFactory } = require('ethers');
 const TicketContract = require('../artifacts/contracts/Ticket.sol/Ticket.json');
-const AccessManagerContract = require('../artifacts/contracts/AccessManager.sol/AccessManager.json'); // Import the AccessManager contract
 const NULL_ADDRESS = '0x0000000000000000000000000000000000000000';
 
 describe('Ticket contract', function () {
   let Ticket;
   let instance;
-  let accessManagerInstance; // Add accessManagerInstance
   let deployer;
   let user;
   let deployerAddress;
@@ -18,9 +16,7 @@ describe('Ticket contract', function () {
     deployerAddress = await deployer.getAddress();
     userAddress = await user.getAddress();
     Ticket = new ContractFactory(TicketContract.abi, TicketContract.bytecode, deployer);
-    AccessManager = new ContractFactory(AccessManagerContract.abi, AccessManagerContract.bytecode, deployer); // Initialize AccessManager
-    accessManagerInstance = await AccessManager.deploy();
-    instance = await Ticket.deploy(accessManagerInstance.address);
+    instance = await Ticket.deploy();
   });
 
   describe('Deployment', function () {
