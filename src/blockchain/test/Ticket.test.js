@@ -81,10 +81,44 @@ describe('Ticket contract', function () {
 
         // Call the burn function through the user's wallet contract
         //await userWallet.burn(0);
-        await instance.connect(userWallet).burn(0)
+
+        await instance.connect(userWallet).approve(deployerAddress, 0);
+
+        await instance.burn(0);
     
-        //const finalBalance = await instance.balanceOf(userAddress);
-        //expect(initialBalance.toNumber() - finalBalance.toNumber()).to.equal(1);
+        const finalBalance = await instance.balanceOf(userAddress);
+        expect(initialBalance.toNumber() - finalBalance.toNumber()).to.equal(1);
+      });
+
+      it("2 - should burn token from an address", async function () {
+        const User = await ethers.getContractFactory("User");
+        const user = await User.deploy();
+        await user.deployed();
+      
+        const Wallet = await ethers.getContractFactory("Wallet");
+        const wallet = await Wallet.deploy();
+        await wallet.deployed();
+      
+        const Ticket = await ethers.getContractFactory("Ticket");
+        const ticket = await Ticket.deploy();
+        await ticket.deployed();
+      
+        await user.register("Alice", "alice@example.com", "1234567890");
+        const userInfo = await user.getInfo("alice@example.com");
+      
+        await ticket.createEvent("Concert", "Stadium", 1672444800, 100, 1000);
+        await ticket.mint(userInfo.wallet, 0);
+      
+        const owner = await ticket.ownerOf(0);
+        expect(owner).to.equal(userInfo.wallet);
+              
+        // Approve the contract to burn the token
+        await ticket.connect(userInfo.wallet).approve(user.address, 0);
+      
+        // Burn the token
+        await ticket.burn(0);
+      
+        await expect(ticket.ownerOf(0)).to.be.reverted;
       });
     });
     
