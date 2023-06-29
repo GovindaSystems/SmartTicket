@@ -56,7 +56,7 @@ describe('Ticket contract', function () {
         const finalBalance = await instance.balanceOf(userAddress);
         expect(finalBalance.toNumber() - initialBalance.toNumber()).to.equal(1);
       });
-/*
+
       it('should emit Transfer event', async function () {
         await instance.createEvent("Test Event", "Test Location", Date.now(), ethers.utils.parseEther("1"), 100);
         await expect(instance.mint(userAddress, 0))
@@ -68,19 +68,19 @@ describe('Ticket contract', function () {
         await instance.createEvent("Test Event", "Test Location", Date.now(), ethers.utils.parseEther("1"), 100);
         await expect(instance.mint(NULL_ADDRESS, 0)).to.be.revertedWith('ERC721: mint to the zero address');
       });
-*/
+
     });
 
     describe('burning', function () {
-    /*  it('should burn token from an address', async function () {
+      it('should burn token from an address', async function () {
         await instance.createEvent("Test Event", "Test Location", Date.now(), ethers.utils.parseEther("1"), 100);
         await instance.mint(userAddress, 0);
         const initialBalance = await instance.balanceOf(userAddress);
-        await instance.connect(user).burn(0);
+        await instance.connect(userAddress).burn(0);
         const finalBalance = await instance.balanceOf(userAddress);
         expect(initialBalance.toNumber() - finalBalance.toNumber()).to.equal(1);
       });
-      */
+    
     });
   });
 
