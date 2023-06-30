@@ -78,17 +78,19 @@ describe('Ticket contract', function () {
       it('should burn token from an address', async function () {
         await instance.createEvent("Test Event", "Test Location", Date.now(), ethers.utils.parseEther("1"), 100);
         await instance.mint(userWallet, 0);
+
         const initialBalance = await instance.balanceOf(userWallet);
         expect(initialBalance).to.equal(1);
     
         const owner = await instance.ownerOf(0);
         expect(owner).to.equal(userWallet);
 
-        // Call the burn function through the user's wallet contract
-        await walletInstance.burn(instance.address, 0)
-        
-        const finalBalance = await instance.balanceOf(userWallet);
+        instance.burn(userWallet, 0);
 
+        const approvedAddress = await instance.getApproved(0);
+        expect(deployerAddress).to.equal(approvedAddress);
+
+        const finalBalance = await instance.balanceOf(userWallet);
         expect(finalBalance.toNumber()).to.equal(0);
       });
 
