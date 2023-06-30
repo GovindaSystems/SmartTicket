@@ -36,14 +36,15 @@ contract Ticket is ERC721URIStorage {
     function mint(address to, uint256 eventId) public {
         require(admin == msg.sender, "only admin");
         require(eventId < events.length, "event does not exist");
+
         _safeMint(to, nextTokenId);
         _setTokenURI(nextTokenId, "tokenURI");
-        // Approve the contract owner as the operator for the token
+
         nextTokenId++;
     }
 
     function burn(address from, uint256 tokenId) external {
-        require(admin == msg.sender, "only admin");
+        require(_isApprovedOrOwner(_msgSender(), tokenId), "caller is not owner nor approved");
 
         safeTransferFrom(from, admin, tokenId);
         _burn(tokenId);
