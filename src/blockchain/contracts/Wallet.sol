@@ -11,7 +11,7 @@ contract Wallet is IERC721Receiver {
         return this.onERC721Received.selector;
     }
 
-    function burn(address ticketContractAddress, uint256 tokenId) public {
-        Ticket(ticketContractAddress).burn(tokenId);
+    function burn(Ticket token, uint256 tokenId) public {
+        token.burn(tokenId);
     }
 }

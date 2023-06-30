@@ -21,12 +21,13 @@ describe('Ticket contract', function () {
     
     instance = await Ticket.deploy();
     userInstance = await User.deploy();
-    walletInstance = await Wallet.deploy();
-
+    
     // Register a user and get their wallet address
     await userInstance.register("Test User", "test@example.com", "1234567890");
     const userInfo = await userInstance.getInfo("test@example.com");
     userWallet = userInfo.wallet;
+
+    walletInstance = Wallet.attach(userWallet);
   });
 
   describe('Deployment', function () {
@@ -78,25 +79,15 @@ describe('Ticket contract', function () {
         await instance.createEvent("Test Event", "Test Location", Date.now(), ethers.utils.parseEther("1"), 100);
         await instance.mint(userWallet, 0);
         const initialBalance = await instance.balanceOf(userWallet);
+        expect(initialBalance).to.equal(1);
     
         const owner = await instance.ownerOf(0);
         expect(owner).to.equal(userWallet);
 
         // Call the burn function through the user's wallet contract
-        await walletInstance.connect(userWallet).approve(deployerAddress, 0)
-        //await instance.approve(deployerAddress, 0);
-        await instance.burn(0);
-        //await walletInstance.connect(userWallet).burn(instance.address, 0);
+        await walletInstance.burn(instance.address, 0)
         
-        //await userWallet.burn(0);
-        
-        //await instance.connect(userWallet).approve(deployerAddress, 0);
-
-        //await instance.burn(0);
-    
         const finalBalance = await instance.balanceOf(userWallet);
-
-        console.log({finalBalance});
 
         expect(finalBalance.toNumber()).to.equal(0);
       });
