@@ -83,7 +83,7 @@ describe('Ticket contract', function () {
         expect(owner).to.equal(userWallet);
 
         // Call the burn function through the user's wallet contract
-        
+        await instance.approve(userWallet, 0);
         await walletInstance.connect(userWallet).burn(instance.address, 0);
         
         //await userWallet.burn(0);
